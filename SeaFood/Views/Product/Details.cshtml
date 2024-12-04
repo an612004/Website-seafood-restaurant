@@ -1,0 +1,73 @@
+﻿@model SeaFood.Models.Product
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+    <style>
+        .container-left {
+            width: 30%;
+            float: left;
+        }
+
+        .container-right {
+            width: 70%;
+            float: right;
+        }
+    </style>
+}
+
+<h2>Chi tiết sản phẩm</h2>
+<div>
+    <div class="container-left">
+        <dd>
+            <img src="@Url.Content(Model.ImageProduct1)" alt="" width="400" height="250">
+        </dd>
+    </div>
+
+    <div class="container-right">
+
+        <dl class="dl-horizontal" style="padding-left:5px;">
+            <dt>
+                @Html.DisplayNameFor(model => model.ProductID)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.ProductID)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ProductName)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.ProductName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Origin)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Origin)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Dish)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Dish)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Price)
+            </dt>
+            <dd>
+                @(Math.Round((double)Model.Price, 1))
+            </dd>
+        </dl>
+        <p>
+            @Html.ActionLink("Quay trở lại", "Menu", null, new { @class = "btn btn-primary" })
+        </p>
+        <a class="btn btn-outline-warning" href="/ShoppingCart/AddToCart/@Model.ProductID">Mua ngay</a>
+    </div>
+
+</div>
+
+

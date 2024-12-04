@@ -1,0 +1,29 @@
+﻿@model IEnumerable<SeaFood.Models.ViewModel>
+
+@{
+    ViewBag.Title = "GroupByTop5";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<h2 style="text-align:center;">Danh sách hải sản bán chạy nhất</h2>
+<table class="table-bordered" align="center" style="text-align:center;">
+    <tr>
+        <th>Mã hải sản</th>
+        <th>Tên hải sản</th>
+        <th>Hình hải sản</th>
+        <th>Giá</th>
+        <th>Số lượng đã bán</th>
+    </tr>
+    @foreach(var i in Model)
+     {
+        <tr>
+            <td>@Html.DisplayFor(model=>i.ProductID)</td>
+            <td>@Html.DisplayFor(model=>i.ProductName)</td>
+            <td><img src="@Url.Content(i.ImageProduct1)" height="150" width="150" /></td>
+            <td>@(Math.Round((double)i.Price, 1)) / 1kg</td>
+            <td>@Html.DisplayFor(model=>i.Sum_Quantity)</td>
+            <td><a href="/ShoppingCart/AddToCart/@i.ProductID" class="btn btn-outline-warning">Mua ngay</a></td>
+        </tr>
+     }
+</table>
+

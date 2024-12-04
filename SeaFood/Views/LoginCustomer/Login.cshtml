@@ -1,0 +1,62 @@
+﻿@model SeaFood.Models.Customer
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+<head>
+    <style>
+        #titleLogin {
+            padding-left: 35%;
+        }
+
+        #inputLogin {
+            width: 30%;
+            border-radius: 20px;
+            margin-left: 35%;
+        }
+    </style>
+</head>
+<div style="margin: 10vh auto; width: 70%; display:flex;flex-direction: column;align-items:center;">
+    <h2 style="text-align: center; padding-top: 30px">Đăng Nhập Tài Khoản</h2>
+    @using (Html.BeginForm("AuthenLogin", "LoginCustomer", FormMethod.Post))
+    {
+        <table class="table">
+            <tr class="mb-3 mt-3">
+                <th>@Html.DisplayNameFor(m => m.IDCus)</th>
+                <td>@Html.TextBoxFor(m => m.IDCus)</td>
+                <td style="color:red;">
+                    <em>@Html.ValidationMessageFor(m => m.IDCus)</em>
+                    @if (ViewBag.ErrorID != null)
+                    {
+                        <h5><em>@ViewBag.ErrorID</em></h5>
+                    }
+                </td>
+            </tr>
+            <tr class="mb-3">
+                <th>@Html.DisplayNameFor(m => m.PasswordCus)</th>
+                <td>@Html.PasswordFor(m => m.PasswordCus)</td>
+                <td style="color:red;">
+                    <em>@Html.ValidationMessageFor(m => m.PasswordCus)</em>
+                    @if (ViewBag.ErrorPass != null)
+                    {
+                        <h5><em>@ViewBag.ErrorPass</em></h5>
+                    }
+                </td>
+            </tr>
+            <tr style="text-align:center" class="mb-3">
+                <td>
+                    Bạn chưa có tài khoản sao ?
+                    @Html.ActionLink("Đăng Ký", "Register", "LoginCustomer")
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input style=" margin-left:50%;" type="submit" name="login" value="Đăng nhập" class="btn btn-primary " />
+                </td>
+            </tr>
+        </table>
+    }
+</div>
+
+

@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewBag.Title = "ShowCart";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+    <style>
+        table.table-bordered {
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: auto;
+            margin-bottom: auto;
+        }
+
+        h2 {
+            text-align: center;
+            font-family: 'Open Sans', sans-serif;
+        }
+    </style>
+}
+
+<h2>Giỏ Hàng</h2>
+<table class="table-bordered">
+    <thead style="text-align:center; font-size:large;">
+        <tr>
+            <th>Tên Sản phẩm</th>
+            <th>Hình sản phẩm</th>
+            <th>Giá</th>
+            <th>Số lượng</th>
+            <th>Thành tiền</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    <td colspan="6">
+        Chưa có sản phẩm nào ! Xin mời tiếp tục mua hàng ...
+    </td>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="6" style="text-align:center; font-size:x-large; color: crimson;">
+                <a href="@Url.Action("Menu","Product")" class="btn btn-primary"> Tiếp tục mua hàng </a>
+            </td>
+        </tr>
+    </tfoot>
+    
+</table>

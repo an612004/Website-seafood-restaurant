@@ -1,0 +1,42 @@
+﻿@model IEnumerable<SeaFood.Models.Category>
+<style>
+/*    .fm-link {
+        color: #ff6a00;
+        font-family: "Agbalumo";
+    }*/
+    #div-u {
+        padding-top: 30px;
+        margin-top: 20px;
+        background-color: #000000;
+        text-decoration: none;
+        text-align:justify;
+    }
+    .div-cate {
+        height: 30px;
+        width: 100%;
+    }
+        .div-cate a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: large;
+        }
+            .div-cate a:hover {
+                color: chartreuse;
+                text-decoration: none;
+            }
+</style>
+<h3 style="color:white; text-align:center;">Danh mục</h3>
+<ul style="list-style-type: none;" id="div-u">
+    <li>
+        <a href="/OrderDetail/GroupByTop5" id="animation-top5" style="color:white; background-color:black; list-style-type:none;text-align:justify;font-size:large">Top 5 bán chạy</a>
+    </li>
+    <hr />
+    @{
+        foreach (var category in Model)
+        {
+            <li class="div-cate">@Html.ActionLink(category.CategoryName, "Menu", "Product", new { id = category.CategoryID }, "")</li>
+            <hr />
+        }
+     }
+</ul>
+

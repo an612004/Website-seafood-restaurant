@@ -1,0 +1,105 @@
+﻿@model SeaFood.Models.Product
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
+    <style>
+        .table-bordered {
+            border: 1px solid #ccc;
+        }
+
+            .table-bordered th, .table-bordered td {
+                border: 1px solid #ccc;
+                padding: 8px;
+            }
+
+            .table-bordered tr:nth-child(even) {
+                background-color: #f9f9f9;
+            }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="file"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 8px;
+            background-color: #008cba;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .action-link {
+            display: block;
+            margin: 0 auto;
+        }
+
+    </style>
+}
+<p></p>
+
+<div style="margin:0 auto;">
+    @using (Html.BeginForm("Create", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <h2 style="text-align:center; font-family: 'Open Sans';">THÊM MỚI SẢN PHẨM</h2>
+        <table class="table-bordered" style="margin-left: auto; margin-right: auto;">
+            <tr>
+                <td>@Html.LabelFor(model => model.ProductID)</td>
+                <td>@Html.EditorFor(model => model.ProductID)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(model => model.ProductName)</td>
+                <td>@Html.EditorFor(model => model.ProductName)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(model => model.Price)</td>
+                <td>@Html.EditorFor(model => model.Price)</td>
+            </tr>
+            <tr>
+                <td>@*@Html.LabelFor(model => model.Category)*@ Danh mục</td>
+                <td>
+                    @{Html.RenderAction("SelectCate", "Product");}
+                </td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(model => model.Origin) </td>
+                <td>@Html.EditorFor(model => model.Origin) </td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(model => model.Dish) </td>
+                <td>@Html.EditorFor(model => model.Dish) </td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(model => model.ImageProduct1)</td>
+                <td>
+                    <img src="@Url.Content(Model.ImageProduct1)" height="150" width="200" id="previewImg" style="display: flex; justify-content: center; border-radius: 4px;" />
+
+                </td>
+            </tr>
+            <tr>
+                <td>@Html.ActionLink("Back to List", "Menu", null, new { @class = "btn btn-outline-dark" })</td>
+                <td colspan="2">
+                    <input type="file" name="UploadImage" onchange="ChangeImage(this, document.getElementById('previewImg'))" />
+                    <input type="submit" value="Tạo mới" />
+                </td>
+
+            </tr>
+        </table>
+        <script src="~/Scripts/script.js"></script>
+
+    }
+</div>
+<p></p>
+@*@section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }*@

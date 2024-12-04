@@ -1,0 +1,46 @@
+﻿@model IEnumerable<SeaFood.Models.Category>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
+}
+
+<h2 style="text-align:center; font-family: 'Open Sans'">Quản lí các loại hải sản</h2>
+
+<p>
+    @Html.ActionLink("Tạo loại mới", "Create", null ,new {@class= "btn btn-outline-dark" })
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CategoryID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CategoryName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CategoryID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CategoryName)
+                </td>
+                <td>
+                    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = item.CategoryID }, new { @class = "btn btn-outline-dark" }) |
+                    @Html.ActionLink("Chi tiết", "Details", new { id = item.CategoryID }, new { @class = "btn btn-outline-dark" }) |
+                    @Html.ActionLink("Xóa", "Delete", new { id = item.CategoryID }, new { @class = "btn btn-outline-dark" })
+                </td>
+            </tr>
+        }
+    </tbody>
+
+
+
+</table>

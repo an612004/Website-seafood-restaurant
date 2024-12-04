@@ -1,0 +1,64 @@
+﻿@model SeaFood.Models.Product
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
+
+}
+
+
+<h3 style="text-align:center;">Bạn có chắc chắn muốn xóa cái này không?</h3>
+<div style="text-align: center">
+    <hr />
+    <dl class="dl-horizontal" style="display: inline-block; text-align: left;">
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Origin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Origin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Dish)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Dish)
+        </dd>
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.ImageProduct1)
+        </dt>
+
+        <dd>
+            <img src="@Url.Content(Model.ImageProduct1)" alt="" height="150" width="200">
+        </dd>
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @(Math.Round((double)Model.Price, 1))
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+<div class="form-actions no-color" sstyle="text-align: center; margin-top: 10px;">
+    @Html.ActionLink("Quay lại danh sách", "Index", null, new { @class = "btn btn-outline-dark" }) |
+    <input type="submit" value="Delete" class="btn btn-outline-dark" /> 
+</div>
+    }
+</div>

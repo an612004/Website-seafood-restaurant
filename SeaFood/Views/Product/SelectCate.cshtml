@@ -1,0 +1,2 @@
+﻿@model SeaFood.Models.Category
+    @Html.DropDownListFor(model=>model.CategoryID, new SelectList(Model.ListCate.OrderBy(model=>model.CategoryName),"CategoryID","CategoryName"),"--Select Cate--")

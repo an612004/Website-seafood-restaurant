@@ -1,0 +1,76 @@
+﻿@model SeaFood.Models.AdminUser
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_LoginAdminLayoutPage.cshtml";
+    //Layout = null;
+}
+<head>
+    <style>
+        #titleLogin {
+            padding-left: 35%;
+        }
+
+        #inputLogin {
+            width: 30%;
+            border-radius: 20px;
+            margin-left: 35%;
+        }
+    </style>
+</head>
+
+<div style="margin: 10vh auto; width: 70%; display:flex;flex-direction: column;align-items:center;>
+    <h2 style="text-align: center; padding-top: 30px; font-family: Times New Roman">Đăng nhập tài khoản</h2>
+    @using (Html.BeginForm("AuthenLogin", "LoginAdmin", FormMethod.Post))
+    {
+        <table class="table">
+            <tr class="mb-3 mt-3">
+                <th>@Html.DisplayNameFor(m => m.ID)</th>
+                <td>
+                    @Html.TextBoxFor(m => m.ID)
+                </td>
+                <td style="color:red;">
+                    <em>@Html.ValidationMessageFor(m => m.ID)</em>
+                    @if (ViewBag.ErrorID != null)
+                    {
+                        <h5><em>@ViewBag.ErrorID</em></h5>
+                    }
+                </td>
+            </tr>
+            <tr class="mb-3">
+                <th>@Html.DisplayNameFor(m => m.NameUser)</th>
+                <td>
+                    @Html.TextBoxFor(m => m.NameUser)
+                </td>
+                <td style="color:red;">
+                    <em>@Html.ValidationMessageFor(m => m.NameUser)</em>
+                    @if (ViewBag.ErrorName != null)
+                    {
+                        <h5><em>@ViewBag.ErrorName</em></h5>
+                    }
+                </td>
+            </tr>
+            <tr class="mb-3">
+                <th>@Html.DisplayNameFor(m => m.PasswordUser)</th>
+                <td>
+                    @Html.PasswordFor(m => m.PasswordUser)
+                </td>
+                <td style="color:red;">
+                    <em>@Html.ValidationMessageFor(m => m.PasswordUser)</em>
+                    @if (ViewBag.ErrorPass != null)
+                    {
+                        <h5><em>@ViewBag.ErrorPass</em></h5>
+                    }
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <input style=" margin-left:45%;" type="submit" name="login" value="Đăng nhập" class="btn btn-primary " />
+                </td>
+            </tr>
+        </table>
+    }
+
+</div>
+
+

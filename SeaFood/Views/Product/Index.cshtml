@@ -1,0 +1,82 @@
+﻿@model IEnumerable<SeaFood.Models.Product>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
+}
+
+<h2 style="text-align:center; font-family: 'Open Sans';">Quản lí các hải sản</h2>
+
+<p style="padding-left:10px">
+    @Html.ActionLink("Tạo mới sản phẩm", "Create", null, new { @class = "btn btn-outline-dark" })
+</p>
+@using (Html.BeginForm("Index", "Product", FormMethod.Get))
+{
+    <div style="padding-left:10px">
+        <input type="text" name="_name" placeholder="Nhập tên hải sản..."  />
+        <input type="submit" value="Tìm" />
+    </div>
+    <p></p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProductID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProductName)
+                </th>
+                <th >
+                    @Html.DisplayNameFor(model => model.Origin)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Dish)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ImageProduct1)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Price)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Category.CategoryName)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <th>
+                        @Html.DisplayFor(modelItem => item.ProductID)
+                    </th>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProductName)
+                    </td>
+                    <td style="text-align: justify;">
+                        @Html.DisplayFor(modelItem => item.Origin)
+                    </td>
+                    <td style="text-align: justify;">
+                        @Html.DisplayFor(modelItem => item.Dish)
+                    </td>
+                    <td>
+                        <img src="@Url.Content(item.ImageProduct1)" alt="" height="150" width="200">
+                    </td>
+                    <td>
+                        @(Math.Round((double)item.Price, 1))
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Category.CategoryName)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ProductID }, new { @class = "btn btn-outline-dark" }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.ProductID }, new { @class = "btn btn-outline-dark" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
